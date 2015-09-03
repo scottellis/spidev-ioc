@@ -68,7 +68,7 @@ int main(int argc, char *argv[])
         exit(1);
     }
     else {
-        printf("Read mode = %u (0x%08X)\n", val, val);
+        printf("\nRead mode = %u (0x%08X)\n", val, val);
     }
 
     if (ioctl(fd, SPI_IOC_WR_MODE, &val) == -1) {
@@ -76,7 +76,7 @@ int main(int argc, char *argv[])
         exit(1);
     }
     else {
-        printf("Wrote mode = %u (0x%08X)\n", val, val);
+        printf("Wrote mode = %u (0x%08X)\n\n", val, val);
     }
 
     // BITS PER WORD
@@ -95,7 +95,7 @@ int main(int argc, char *argv[])
         exit(1);
     }
     else {
-        printf("Wrote bits per word = %u (0x%08X)\n", val, val);
+        printf("Wrote bits per word = %u (0x%08X)\n\n", val, val);
     }
 
     // SPEED
@@ -114,7 +114,7 @@ int main(int argc, char *argv[])
         exit(1);
     }
     else {
-        printf("Wrote speed = %u (0x%08X)\n", val, val);
+        printf("Wrote speed = %u (0x%08X)\n\n", val, val);
     }
 
     // LSB FIRST 
@@ -133,7 +133,7 @@ int main(int argc, char *argv[])
         exit(1);
     }
     else {
-        printf("Wrote lsb first = %u (0x%08X)\n", val, val);
+        printf("Wrote lsb first = %u (0x%08X)\n\n", val, val);
     }
 
     // MODE32 
@@ -152,7 +152,7 @@ int main(int argc, char *argv[])
         exit(1);
     }
     else {
-        printf("Wrote mode32 = %u (0x%08X)\n", val, val);
+        printf("Wrote mode32 = %u (0x%08X)\n\n", val, val);
     }
 
     close(fd);
