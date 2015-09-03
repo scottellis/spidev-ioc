@@ -66,7 +66,7 @@ int main(int argc, char *argv[])
         exit(1);
     }
     else {
-        printf("Read mode = %u\n", val);
+        printf("Read mode = %u (0x%08X)\n", val, val);
     }
 
     if (ioctl(fd, SPI_IOC_WR_MODE, &val) == -1) {
@@ -74,7 +74,7 @@ int main(int argc, char *argv[])
         exit(1);
     }
     else {
-        printf("Wrote mode = %u\n", val);
+        printf("Wrote mode = %u (0x%08X)\n", val, val);
     }
 
     // BITS PER WORD
@@ -83,7 +83,7 @@ int main(int argc, char *argv[])
         exit(1);
     }
     else {
-        printf("Read bits per word = %u\n", val);
+        printf("Read bits per word = %u (0x%08X)\n", val, val);
     }
 
     if (ioctl(fd, SPI_IOC_WR_BITS_PER_WORD, &val) == -1) {
@@ -91,7 +91,7 @@ int main(int argc, char *argv[])
         exit(1);
     }
     else {
-        printf("Wrote bits per word = %u\n", val);
+        printf("Wrote bits per word = %u (0x%08X)\n", val, val);
     }
 
     // SPEED
@@ -100,7 +100,7 @@ int main(int argc, char *argv[])
         exit(1);
     }
     else {
-        printf("Read speed = %u\n", val);
+        printf("Read speed = %u (0x%08X)\n", val, val);
     }
 
     if (ioctl(fd, SPI_IOC_WR_MAX_SPEED_HZ, &val) == -1) {
@@ -108,7 +108,7 @@ int main(int argc, char *argv[])
         exit(1);
     }
     else {
-        printf("Wrote speed = %u\n", val);
+        printf("Wrote speed = %u (0x%08X)\n", val, val);
     }
 
     // LSB FIRST 
@@ -117,7 +117,7 @@ int main(int argc, char *argv[])
         exit(1);
     }
     else {
-        printf("Read lsb first = %u\n", val);
+        printf("Read lsb first = %u (0x%08X)\n", val, val);
     }
 
     if (ioctl(fd, SPI_IOC_WR_LSB_FIRST, &val) == -1) {
@@ -125,7 +125,7 @@ int main(int argc, char *argv[])
         exit(1);
     }
     else {
-        printf("Wrote lsb first = %u\n", val);
+        printf("Wrote lsb first = %u (0x%08X)\n", val, val);
     }
 
     // MODE32 
@@ -134,7 +134,7 @@ int main(int argc, char *argv[])
         exit(1);
     }
     else {
-        printf("Read mode32 first = %u\n", val);
+        printf("Read mode32 first = %u (0x%08X)\n", val, val);
     }
 
     if (ioctl(fd, SPI_IOC_WR_MODE32, &val) == -1) {
@@ -142,7 +142,7 @@ int main(int argc, char *argv[])
         exit(1);
     }
     else {
-        printf("Wrote mode32 = %u\n", val);
+        printf("Wrote mode32 = %u (0x%08X)\n", val, val);
     }
 
     close(fd);
