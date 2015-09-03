@@ -61,6 +61,8 @@ int main(int argc, char *argv[])
     }
 
     // MODE
+    val = 0;
+
     if (ioctl(fd, SPI_IOC_RD_MODE, &val) == -1) {
         perror("ioctl(SPI_IOC_RD_MODE)");
         exit(1);
@@ -78,6 +80,8 @@ int main(int argc, char *argv[])
     }
 
     // BITS PER WORD
+    val = 0;
+
     if (ioctl(fd, SPI_IOC_RD_BITS_PER_WORD, &val) == -1) {
         perror("ioctl(SPI_IOC_RD_BITS_PER_WORD)");
         exit(1);
@@ -95,6 +99,8 @@ int main(int argc, char *argv[])
     }
 
     // SPEED
+    val = 0;
+
     if (ioctl(fd, SPI_IOC_RD_MAX_SPEED_HZ, &val) == -1) {
         perror("ioctl(SPI_IOC_RD_MAX_SPEED_HZ)");
         exit(1);
@@ -112,6 +118,8 @@ int main(int argc, char *argv[])
     }
 
     // LSB FIRST 
+    val = 0;
+
     if (ioctl(fd, SPI_IOC_RD_LSB_FIRST, &val) == -1) {
         perror("ioctl(SPI_IOC_RD_LSB_FIRST)");
         exit(1);
@@ -129,6 +137,8 @@ int main(int argc, char *argv[])
     }
 
     // MODE32 
+    val = 0;
+
     if (ioctl(fd, SPI_IOC_RD_MODE32, &val) == -1) {
         perror("ioctl(SPI_IOC_RD_MODE32)");
         exit(1);
