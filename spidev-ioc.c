@@ -21,8 +21,8 @@ void usage()
 {
     printf("\nUsage: spidev-ioc [-d <device>] [-h]\n");
     printf("  -d <device>     Device, defaults to /dev/spidev1.0\n");
+    printf("  -s <speed>      Set a new speed\n");
     printf("  -h              Show this help\n\n");  
-    printf("Use Ctrl-C to stop.\n\n");
 
     exit(1);
 } 
@@ -31,12 +31,15 @@ int main(int argc, char *argv[])
 {
     int opt, fd;
     uint32_t val;
+    int speed;
     char device[32];
 
     memset(device, 0, sizeof(device));
     strcpy(device, DEFAULT_DEVICE);
+
+    speed = 0;
  
-    while ((opt = getopt(argc, argv, "d:h")) != -1) {
+    while ((opt = getopt(argc, argv, "d:s:h")) != -1) {
         switch (opt) {
         case 'd':
             if (strlen(optarg) == 0 || strlen(optarg) > sizeof(device) - 1) {
@@ -45,6 +48,16 @@ int main(int argc, char *argv[])
             }
            
             strcpy(device, optarg); 
+            break;
+
+        case 's':
+            speed = atoi(optarg);
+
+            if (speed < 1 || speed > 48000000) {
+                printf("\nInvalid speed: %s\n", optarg);
+                usage();
+            }
+
             break;
 
         case 'h':
@@ -109,12 +122,27 @@ int main(int argc, char *argv[])
         printf("Read speed = %u (0x%08X)\n", val, val);
     }
 
+    if (speed > 0)
+        val = speed;
+
     if (ioctl(fd, SPI_IOC_WR_MAX_SPEED_HZ, &val) == -1) {
         perror("ioctl(SPI_IOC_WR_MAX_SPEED_HZ)");
         exit(1);
     }
     else {
         printf("Wrote speed = %u (0x%08X)\n\n", val, val);
+
+        if (speed > 0) {
+            val = 0;
+
+            if (ioctl(fd, SPI_IOC_RD_MAX_SPEED_HZ, &val) == -1) {
+                perror("ioctl(SPI_IOC_RD_MAX_SPEED_HZ)");
+                exit(1);
+            }
+            else {
+                printf("Read speed = %u (0x%08X)\n\n", val, val);
+            }
+        }
     }
 
     // LSB FIRST 
